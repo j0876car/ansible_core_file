@@ -5,3 +5,5 @@
     gather_subset:
       - default
 - copy: content="{{ios_facts_out}}" dest="{{inventory_hostname}}_ios_facts_out.json"
+
+#added register variable
