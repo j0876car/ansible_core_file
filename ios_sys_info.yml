@@ -1,0 +1,7 @@
+- name: Gather some system info
+  register: ios_facts_out
+  ios_facts:
+    provider: "{{provider}}"
+    gather_subset:
+      - default
+- copy: content="{{ios_facts_out}}" dest="{{inventory_hostname}}_ios_facts_out.json"
