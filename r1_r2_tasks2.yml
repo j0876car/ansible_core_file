@@ -1,0 +1,6 @@
+- name: set ospf network type
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - ip ospf network point-to-point
+    parents: int lo0

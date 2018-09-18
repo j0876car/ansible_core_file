@@ -1,0 +1,14 @@
+- name: configure DMVPN tunnel interface
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - no shut
+      - ip mtu 1440
+      - ip nhrp authentication cisco
+      - ip nhrp map multicast dynamic
+      - ip nhrp network-id 1
+      - ip nhrp nhs dynamic
+      - tunnel source lo0
+      - tunnel mode gre multipoint
+      - tunnel key 0
+    parents: interface tunnel 100

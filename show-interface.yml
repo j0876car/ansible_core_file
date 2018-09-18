@@ -1,0 +1,4 @@
+- name: show interfaces
+  ios_command:
+    provider: "{{provider}}"
+    commands: show ip interface brief

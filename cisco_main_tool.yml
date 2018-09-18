@@ -1,0 +1,18 @@
+---
+- hosts: ios_all
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+#  - name: obtain login credentials
+#    include_vars: secrets.yml
+
+  - name: define provider
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{username}}"
+        password: "{{password}}"
+
+  - include: tasks/ios_sys_info.yml

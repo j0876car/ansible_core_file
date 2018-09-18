@@ -1,0 +1,15 @@
+- name: configure interface f2/0
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - no shut
+      - description interface facing r3
+      - ip address 192.168.2.2 255.255.255.0
+    parents: interface f2/0
+
+- name: advertise 192.168.2.0/24 network in ospf
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - network 192.168.2.0 0.0.0.255 area 1
+    parents: router ospf 1 

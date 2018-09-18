@@ -1,0 +1,22 @@
+- name: configure lo0
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - no shut
+      - ip add 172.16.0.3 255.255.255.0
+    parents: interface lo0
+
+- name: configure ospf
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - network 192.168.2.0 0.0.0.255 area 1
+      - network 172.16.0.0 0.0.0.255 area 1
+    parents: router ospf 1
+
+- name: remove static route
+  ios_config:
+    provider: "{{provider}}"
+    lines:
+      - no ip route 0.0.0.0 0.0.0.0 192.168.2.2
+    backup: yes 
